@@ -1,0 +1,19 @@
+
+<div class="row align-items-start">
+    <div class="col-4">
+        <div class="d-flex mt-2">
+            <!-- <input [(ngModel)]="search" type="text" placeholder="Search" class="form-control me-2"> -->
+            <input type="text" placeholder="Search" class="form-control me-2">
+            <button class="btn btn-outline-primary mx-2">Search</button>
+            <button class="btn btn-outline-secondary mx-2">Clear</button>
+        </div>
+        <div class="list-group">
+            <div *ngFor="let customer of customers">
+                <app-customer-list-item [customer]="customer"></app-customer-list-item>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+      <app-customer-profile [selectedCustomer]="selectedCustomer"></app-customer-profile>
+    </div>
+  </div>
