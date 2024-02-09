@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './customer.service';
 import { Customer } from '../shared/models/customer';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -10,10 +11,10 @@ import { Customer } from '../shared/models/customer';
 
 export class CustomerComponent implements OnInit{
   customers: Customer[] = [];
-  selectedCustomer: Customer = this.customers[0];
+  selectedCustomer?: Customer;
   search: string = '';
   
-  constructor(private customerService: CustomerService) {}
+  constructor(private customerService: CustomerService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.getCustomers();
@@ -23,10 +24,19 @@ export class CustomerComponent implements OnInit{
     this.customerService.getCustomers().subscribe({
       next: response => {
         this.customers = response,
-        this.selectedCustomer = this.customers[0];
+        this.selectCustomer();
       },
       error: error => console.log(error)
     })
+  }
+
+  selectCustomer() {
+    const selectedCustomerNumber = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+
+    if (selectedCustomerNumber)
+      this.selectedCustomer = this.customers.find(customer => customer.customer_number == selectedCustomerNumber);
+    else
+      this.selectedCustomer = this.customers[0];
   }
 
 }

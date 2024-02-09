@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { CustomerModule } from './customer/customer.module';
+import { HomeModule } from './home/home.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { CustomerModule } from './customer/customer.module';
     HttpClientModule,
     CoreModule,
     CustomerModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
