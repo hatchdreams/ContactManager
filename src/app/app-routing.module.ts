@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CustomerComponent } from './customer/customer.component';
+import { BusinessComponent } from './business/business.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'customer', component: CustomerComponent},
-  {path: 'customer/:id', component: CustomerComponent},
-  {path: 'business', component: CustomerComponent},
+  {path: 'customer', loadChildren: () => import("./customer/customer.module").then(m => m.CustomerModule)}, //lazy load
+  {path: 'business', component: BusinessComponent},
   {path: '**', redirectTo: 'full'},
 ];
 

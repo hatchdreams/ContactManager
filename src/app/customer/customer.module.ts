@@ -4,6 +4,7 @@ import { CustomerComponent } from './customer.component';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { CustomerListItemComponent } from './customer-list-item/customer-list-item.component';
 import { RouterModule } from '@angular/router';
+import { CustomerRoutingModule } from './customer-routing.module';
 
 
 
@@ -15,10 +16,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
-  ],
-  exports: [
-    CustomerComponent
+    CustomerRoutingModule
   ]
 })
 export class CustomerModule { }
