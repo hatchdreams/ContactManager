@@ -1,18 +1,19 @@
-<header class="d-flex flex-row align-items-center justify-content-between p-3 px-4 mb-3
+<header class="d-flex flex-row align-items-center justify-content-between p-1 px-4 mb-3
     bg-white border-bottom fixed-top shadow-sm">
-    <img src="assets/images/logo.jpg" alt="logo"  routerLink="/" style="max-height: 50px;">
+    <img class="d-none d-lg-block" src="assets/images/logo.svg" alt="logo"  routerLink="/" style="max-height: 30px;">
+    <img class="d-lg-none" src="assets/images/logo_sailboat.svg" alt="logo"  routerLink="/" style="max-height: 50px;">
     <nav class="my-2">
-        <a class="p-2" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">HOME</a>
-        <a class="p-2" routerLink="/customer" routerLinkActive="active">CUSTOMERS</a>
-        <a class="p-2" routerLink="/business" routerLinkActive="active">BUSINESSES</a>
-        <a class="p-2" routerLink="/test-error" routerLinkActive="active">ERRORS</a>
+        <a class="p-2" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a class="p-2" routerLink="/customer" routerLinkActive="active">Customers</a>
+        <a class="p-2" routerLink="/business" routerLinkActive="active">Businesses</a>
+        <a class="p-2" routerLink="/test-error" routerLinkActive="active">Errors</a>
     </nav>
     <div class="d-flex align-items-center">
         <a class="position-relative">
             <i class="fa fa-envelope fa-2x me-5 text-dark"></i>
             <div class="email-no">5</div>
         </a>
-        <a href="" class="btn btn-outline-secondary me-2">Login</a>
-        <a href="" class="btn btn-outline-secondary me-2">Signup</a>
+        <a href="" class="btn btn-outline-info me-2">Open an Account</a>
+        <a href="" class="btn btn-info me-2">Log In</a>
     </div>
 </header>

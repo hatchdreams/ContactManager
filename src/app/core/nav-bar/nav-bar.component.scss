@@ -12,10 +12,16 @@
 
 a {
     text-decoration: none;
-    color: #343a40;
+    color: #002F6F;
+    font-weight: 600;
 
     &.active{
-        color: navy
+        color: #0077cc;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-thickness: 4px;
+        text-underline-offset: 8px;
+        text-size-adjust: 100%;
     }
 }
 
