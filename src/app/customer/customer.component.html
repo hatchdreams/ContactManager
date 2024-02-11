@@ -3,24 +3,22 @@
     <div class="col-4">
         <div class="list-group">
             <div class="d-flex my-2 mx-2">
-                <!-- <input [(ngModel)]="search" type="text" placeholder="Search" class="form-control me-2"> -->
-                <input type="text" placeholder="Search" class="form-control me-2">
+                <input [(ngModel)]="search" type="text" placeholder="Search" class="form-control me-2">
                 <button class="btn btn-outline-primary mx-1">Search</button>
                 <button class="btn btn-outline-secondary mx-1">New</button>
             </div>
             <div *ngFor="let customer of customers">
                 <a *ngIf="customer"  routerLink="/customer/{{customer.customer_number}}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-                    <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                    <img src="/assets/images/profile_image.jpg" alt="twbs" width="50" height="50" class="rounded-circle flex-shrink-0">
                     <div class="d-flex gap-2 w-100 justify-content-between">
                       <div>
                         <h6 class="mb-0">{{customer.first_name}} {{customer.last_name}}</h6>
-                        <p class="mb-0 opacity-75">DOB: {{customer.date_birth}}, Age: {{customer.date_birth}}</p>
-                        <p class="mb-0 opacity-75">C#: {{customer.customer_number}}, SSN: {{customer.ssn}}</p>
+                        <p class="mb-0 opacity-75"><span class="text-body-secondary">C#:</span> {{customer.customer_number}}, <span class="text-body-secondary">SSN:</span> {{customer.ssn}}</p>
+                        <p class="mb-0 opacity-75"><span class="text-body-secondary">DOB:</span> {{customer.date_birth}}, <span class="text-body-secondary">Age: </span>{{customer.date_birth | age}}</p>
                       </div>
-                      <small class="opacity-50 text-nowrap">{{customer.join_date}}</small>
+                      <small class="opacity-50 text-nowrap">{{customer.join_date | dateAgo}}</small>
                     </div>                    
                   </a>
-                <!-- <app-customer-list-item [customer]="customer"></app-customer-list-item> -->
             </div>
         </div>
     </div>

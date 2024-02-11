@@ -7,6 +7,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
+import { AgePipe } from './pipes/age.pipe';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NavBarComponent,
     TestErrorComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    DateAgoPipe,
+    AgePipe,
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   ],
   exports: [
     NavBarComponent,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    DateAgoPipe,
+    AgePipe
   ]
 })
 export class CoreModule { }

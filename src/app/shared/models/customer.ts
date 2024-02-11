@@ -11,3 +11,8 @@ import { PrimaryAddress } from "./primaryAdress";
     mobile_phone_number?: string;
     join_date: string;
   }
+
+
+export class Customer implements Customer {
+  customer_number: number = Math.floor(Math.random()*90000) + 10000;
+}
