@@ -6,6 +6,7 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
+import { NewCustomerComponent } from './new-customer/new-customer.component';
 
 
 
@@ -13,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     CustomerComponent,
     CustomerProfileComponent,
+    NewCustomerComponent,
   ],
   imports: [
     CommonModule,

@@ -4,12 +4,12 @@ import { Customer } from 'src/app/shared/models/customer';
 import { CustomerService } from '../customer.service';
 
 @Component({
-  selector: 'app-customer-profile',
-  templateUrl: './customer-profile.component.html',
-  styleUrls: ['./customer-profile.component.scss']
+  selector: 'app-new-customer',
+  templateUrl: './new-customer.component.html',
+  styleUrls: ['./new-customer.component.scss']
 })
-export class CustomerProfileComponent {
-  @Input() selectedCustomer?: Customer;
+export class NewCustomerComponent {
+  newCustomer: Customer = new Customer();
   errors: string[] | null = null;
 
   phoneValidator = "^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$"
@@ -24,14 +24,24 @@ export class CustomerProfileComponent {
     ssn: ['', Validators.pattern(this.socialSecurityValidator)],
     email: ['', Validators.email],
     mobile_phone_number: ['', Validators.pattern(this.phoneValidator)],
+    //Address
+    address_line_1: ['', Validators.required],
+    city: ['', Validators.required],
+    state: ['', Validators.required],
+    zip_code: ['', Validators.required],
   })
 
 
   onSubmit() {
-    this.customerService.newCustomer(this.customerForm.value).subscribe({
-      next: () => console.log(this.customerForm.value),
-      error: error => this.errors = error.errors
-    })
+    if (this.customerForm.valid)
+      this.customerService.newCustomer(this.customerForm.value).subscribe({
+        next: () => console.log(this.customerForm.value),
+        error: error => this.errors = error.errors
+      })
+    else {
+      this.customerForm.markAllAsTouched();
+      this.errors = ['Please resolve errors above before saving customer.']
+    }
   }
 
 }

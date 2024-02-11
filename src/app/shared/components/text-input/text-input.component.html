@@ -1,24 +1,14 @@
 
-<div class="col-12 mb-3">
-    <label class="form-label">{{label}}</label>
+<div class="form-floating mb-3">
     <input
         type={{type}}
         [formControl]="control"
+        placeholder="{{label}}"
         class="form-control"
         [ngClass]="(control.touched) ? control.invalid ? 'is-invalid' : 'is-valid' : null"
     >
+    <label for="floatingInput">{{label}}</label>
     <div *ngIf="control.errors?.['required']" class="invalid-feedback">Please enter your {{label}}</div>
     <div *ngIf="control.errors?.['email']" class="invalid-feedback">Invalid email address</div>
     <div *ngIf="control.errors?.['pattern']" class="invalid-feedback">Please enter a valid {{label}}</div>
 </div>
-
-
-
-
-<!-- <div class="col-12">
-    <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
-    <input [(ngModel)]="selectedCustomer.email" type="email" class="form-control" id="email" placeholder="you@example.com">
-    <div class="invalid-feedback">
-      Please enter a valid email address.
-    </div>
-  </div> -->
