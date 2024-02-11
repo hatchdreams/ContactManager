@@ -1,14 +1,15 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer } from '../shared/models/customer';
+import { environment } from '../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-  baseUrl = 'https://my.api.mockaroo.com/customers.json';
-  key = '03c46990';
+  baseUrl = environment.apiUrl;
+  key = environment.apiKey; 
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +17,14 @@ export class CustomerService {
     let params = new HttpParams();
     params = params.append('key', this.key);
 
-    return this.http.get<Customer[]>(this.baseUrl, {params})
+    return this.http.get<Customer[]>(this.baseUrl + 'customers.json', {params})
+  }
+
+  newCustomer(customerForm: any) {
+    let params = new HttpParams();
+    params = params.append('key', this.key);
+
+    return this.http.post<Customer>(this.baseUrl + 'customers.json' , {params})
   }
 
 }

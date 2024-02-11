@@ -5,6 +5,7 @@ import { CustomerProfileComponent } from './customer-profile/customer-profile.co
 import { CustomerRoutingModule } from './customer-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -17,7 +18,8 @@ import { CoreModule } from '../core/core.module';
     CommonModule,
     CustomerRoutingModule,
     FormsModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ]
 })
 export class CustomerModule { }

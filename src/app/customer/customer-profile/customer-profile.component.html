@@ -6,9 +6,16 @@
     </div>
      <div class="row mx-3">
       <div class="col">
-        <form class="needs-validation" novalidate="">
+        <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+          <app-text-input [formControl]="customerForm.controls['first_name']" [label]="'First Name'"></app-text-input>
+          <app-text-input [formControl]="customerForm.controls['last_name']" [label]="'Last Name'"></app-text-input>
+          <!-- <app-text-input [formControl]="customerForm.controls['date_birth']"></app-text-input> -->
+          <app-text-input [formControl]="customerForm.controls['ssn']" [label]="'Social Security Number'"></app-text-input>
+          <app-text-input [formControl]="customerForm.controls['email']" [label]="'Email Address'"></app-text-input>
+          <app-text-input [formControl]="customerForm.controls['mobile_phone_number']" [label]="'Mobile Phone Number'"></app-text-input>
+
           <div class="row g-3">
-            <div class="col-sm-6">
+            <!-- <div class="col-sm-6">
               <label for="firstName" class="form-label">First name</label>
               <input type="text" [(ngModel)]="selectedCustomer.first_name" class="form-control" id="firstName" placeholder="" value="" required="">
               <div class="invalid-feedback">
@@ -21,7 +28,7 @@
               <div class="invalid-feedback">
                 Valid last name is required.
               </div>
-            </div>
+            </div> -->
 
             <div class="col-12">
               <label for="ssn" class="form-label">Date of Birth </label>
@@ -31,14 +38,16 @@
               </div>
             </div>
  
-            <div class="col-12">
+    
+
+            <!-- <div class="col-12">
               <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
               <input [(ngModel)]="selectedCustomer.email" type="email" class="form-control" id="email" placeholder="you@example.com">
               <div class="invalid-feedback">
                 Please enter a valid email address.
               </div>
-            </div>
-
+            </div> -->
+<!-- 
             <div class="col-12">
               <label for="ssn" class="form-label">Mobile Phone Number <span class="text-body-secondary">(Optional)</span></label>
               <input [(ngModel)]="selectedCustomer.mobile_phone_number" type="email" class="form-control" id="email" placeholder="407-456-7891">
@@ -49,11 +58,11 @@
 
             <div class="col-12">
               <label for="ssn" class="form-label">SSN <span class="text-body-secondary">(Optional)</span></label>
-              <input [(ngModel)]="selectedCustomer.email" type="email" class="form-control" id="email" placeholder="123-45-6789">
+              <input [(ngModel)]="selectedCustomer.ssn" type="email" class="form-control" id="email" placeholder="123-45-6789">
               <div class="invalid-feedback">
                 Please enter a valid social security number.
               </div>
-            </div>
+            </div> -->
 
             <div class="col-12">
               <label for="address" class="form-label">Address</label>
@@ -94,8 +103,8 @@
             </div>
           </div>
           <!-- <hr class="my-2"> -->
-          <button class="w-100 btn btn-primary btn-lg mt-3" type="submit">Save Customer</button>
-        </form>
+          <button type="submit" [disabled]="customerForm.invalid" class="w-100 btn btn-primary btn-lg mt-3" >Save Customer</button>
+          </form>
       </div>
     </div>
   </main>

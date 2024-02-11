@@ -15,4 +15,5 @@ import { PrimaryAddress } from "./primaryAdress";
 
 export class Customer implements Customer {
   customer_number: number = Math.floor(Math.random()*90000) + 10000;
+  join_date: string = new Date().toDateString();
 }
