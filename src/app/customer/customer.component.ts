@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class CustomerComponent implements OnInit{
-  createNewCustomer: boolean = false;
+  createNew: boolean = false;
   customers: Customer[] = [];
   selectedCustomer?: Customer;
   search: string = '';
@@ -38,6 +38,11 @@ export class CustomerComponent implements OnInit{
       this.selectedCustomer = this.customers.find(customer => customer.customer_number == selectedCustomerNumber);
     else
       this.selectedCustomer = this.customers[0];
+  }
+
+  createNewCustomer() {
+    this.createNew=true;
+    this.selectedCustomer = new Customer();
   }
 
   //frontend filtering, limited api

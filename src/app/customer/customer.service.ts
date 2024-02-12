@@ -30,13 +30,15 @@ export class CustomerService {
   }
 
   newCustomer(customerForm: any) {
-    //fake api - will always return 201
-    return this.http.post<any>(`${environment.apiUrl}customers.json?key=${environment.apiKey}`, customerForm)
+    return this.http.post<any>(`${environment.apiUrl}customers.json?key=${environment.apiKey}`, customerForm).pipe(
+      tap(result => {
+        //this.customers.push(customerForm);
+      })
+    )
   }
 
   checkEmailExists(email: string) {
-    //replace with real api
-    return of(null);
+    return of(null); //replace with api
   }
 
 

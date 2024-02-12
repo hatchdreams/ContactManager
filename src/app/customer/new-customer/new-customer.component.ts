@@ -11,7 +11,7 @@ import { debounceTime, finalize, map, switchMap, take } from 'rxjs/operators';
   styleUrls: ['./new-customer.component.scss']
 })
 export class NewCustomerComponent {
-  newCustomer: Customer = new Customer();
+  @Input() selectedCustomer?: Customer;
   errors: string[] | null = null;
 
   phoneValidator ="[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]"
@@ -57,6 +57,10 @@ export class NewCustomerComponent {
         })
       )
     }
+  }
+
+  cancel() {
+
   }
 
 
