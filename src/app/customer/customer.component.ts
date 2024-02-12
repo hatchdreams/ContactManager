@@ -25,13 +25,13 @@ export class CustomerComponent implements OnInit{
     this.customerService.getCustomers().subscribe({
       next: response => {
         this.customers = response,
-        this.selectCustomer();
+        this.selectCustomerFromUrl();
       },
       error: error => console.log(error)
     })
   }
 
-  selectCustomer() {
+  selectCustomerFromUrl() {
     const selectedCustomerNumber = Number(this.activatedRoute.snapshot.paramMap.get('id'));
 
     if (selectedCustomerNumber)
@@ -39,7 +39,14 @@ export class CustomerComponent implements OnInit{
     else
       this.selectedCustomer = this.customers[0];
   }
+  
+  
+  selectCustomerRow(customer: Customer) {
+    this.selectedCustomer=customer;
+    this.createNew=false
+  }
 
+  
   createNewCustomer() {
     this.createNew=true;
     this.selectedCustomer = new Customer();
@@ -49,5 +56,4 @@ export class CustomerComponent implements OnInit{
   filterResults() {
  
   }
-
 }

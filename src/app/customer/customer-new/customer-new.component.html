@@ -1,8 +1,7 @@
 <form *ngIf="selectedCustomer" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
     <div class="pt-5 pb-3 text-center">
       <img src="/assets/images/profile_image2.jpg" alt="twbs" width="100" height="100" class="rounded-circle flex-shrink-0">
-      <h2>New Customer ({{selectedCustomer.customer_number}})</h2>
-      <p class="lead">Join Date: {{selectedCustomer.join_date | date}}</p>
+      <h2>New Customer (TBD)</h2>
     </div>
     <div class="d-flex justify-content-center mt-2 mx-4">
       <div class="row">
@@ -46,10 +45,7 @@
             </li>
           </ul>
         </div> 
-        <div class="col-6">
-          <button (click)="cancel()" class="w-100 btn btn-secondary btn-lg">Cancel</button>
-        </div>
-        <div class="col-6">
+        <div class="col-12">
           <button type="submit" class="w-100 btn btn-info btn-lg" >Add Customer</button>
         </div>
       </div>

@@ -6,9 +6,9 @@ import { ToastrService } from 'ngx-toastr';
 import { debounceTime, finalize, map, switchMap, take } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-new-customer',
-  templateUrl: './new-customer.component.html',
-  styleUrls: ['./new-customer.component.scss']
+  selector: 'app-customer-new',
+  templateUrl: './customer-new.component.html',
+  styleUrls: ['./customer-new.component.scss']
 })
 export class NewCustomerComponent {
   @Input() selectedCustomer?: Customer;
@@ -36,7 +36,7 @@ export class NewCustomerComponent {
   onSubmit() {
     if (this.customerForm.valid)
       this.customerService.newCustomer(this.customerForm.value).subscribe({
-        next: () => this.toastr.success('Customer Added'),
+        next: () =>  this.toastr.success('Customer Added'),
         error: error => this.errors = error.errors
       })
     else {
@@ -58,10 +58,5 @@ export class NewCustomerComponent {
       )
     }
   }
-
-  cancel() {
-
-  }
-
 
 }

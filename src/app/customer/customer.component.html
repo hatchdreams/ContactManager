@@ -1,30 +1,29 @@
 
 <div class="row align-items-start" *ngIf="customers.length > 0">
     <div class="col-4">
-        <div class="list-group">
-            <div class="d-flex my-2 mx-2 list-group-item-sticky">
-              <input [(ngModel)]="search" (ngModelChange)="filterResults()" type="text" placeholder="Search" class="form-control me-2">
-              <button (click)="createNewCustomer()" class="btn btn-info mx-1">New</button>
-            </div>
-            <div *ngFor="let customer of customers" class="">
-                <a *ngIf="customer" (click)="selectedCustomer=customer;createNew=false" 
-                    [class.active]="selectedCustomer==customer" routerLink="/customer/{{customer.customer_number}}"
-                  class="list-group-item list-group-item-action d-flex gap-3 py-1" aria-current="true">
-                    <img src="/assets/images/profile_image2.jpg" alt="twbs" width="50" height="50" class="rounded-circle flex-shrink-0">
-                    <div class="d-flex gap-2 w-100 justify-content-between">
-                      <div>
-                        <h6 class="mb-0">{{customer.first_name}} {{customer.last_name}}</h6>
-                        <p class="mb-0 opacity-75"><span class="text-body-secondary">C#:</span> {{customer.customer_number || 'none'}}, <span class="text-body-secondary">SSN:</span> {{customer.ssn | slice: 7 || 'none'}}</p>
-                        <p class="mb-0 opacity-75"><span class="text-body-secondary">DOB:</span> {{customer.date_birth}}, <span class="text-body-secondary">Age: </span>{{customer.date_birth | age}}</p>
-                      </div>
-                      <small class="opacity-50 text-nowrap">{{customer.join_date | dateAgo}}</small>
-                    </div>                    
-                  </a>
-            </div>
+      <div class="list-group">
+        <div class="d-flex my-2 mx-2 list-group-item-sticky">
+          <input [(ngModel)]="search" (ngModelChange)="filterResults()" type="text" placeholder="Search" class="form-control me-2">
+          <button (click)="createNewCustomer()" class="btn btn-info mx-1">New</button>
         </div>
+        <div *ngFor="let customer of customers" class="">
+          <a *ngIf="customer" (click)="selectCustomerRow(customer)" [class.active]="selectedCustomer==customer" routerLink="/customer/{{customer.customer_number}}"
+          class="list-group-item list-group-item-action d-flex gap-3 py-1" aria-current="true">
+            <img src="/assets/images/profile_image2.jpg" alt="twbs" width="50" height="50" class="rounded-circle flex-shrink-0">
+            <div class="d-flex gap-2 w-100 justify-content-between">
+              <div>
+                <h6 class="mb-0">{{customer.first_name}} {{customer.last_name}}</h6>
+                <p class="mb-0 opacity-75"><span class="text-body-secondary">C#:</span> {{customer.customer_number || 'none'}}, <span class="text-body-secondary">SSN:</span> {{customer.ssn | slice: 7 || 'none'}}</p>
+                <p class="mb-0 opacity-75"><span class="text-body-secondary">DOB:</span> {{customer.date_birth}}, <span class="text-body-secondary">Age: </span>{{customer.date_birth | age}}</p>
+              </div>
+              <small class="opacity-50 text-nowrap">{{customer.join_date | dateAgo}}</small>
+            </div>                    
+          </a>
+        </div>
+      </div>
     </div>
     <div class="col-8">
       <app-customer-profile *ngIf="!createNew" [selectedCustomer]="selectedCustomer"></app-customer-profile>
-      <app-new-customer *ngIf="createNew" [selectedCustomer]="selectedCustomer"></app-new-customer>
+      <app-customer-new *ngIf="createNew" [selectedCustomer]="selectedCustomer"></app-customer-new>
     </div>
   </div>

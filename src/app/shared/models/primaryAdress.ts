@@ -4,3 +4,9 @@ export interface PrimaryAddress {
   state: string;
   zip_code: number;
 }
+
+export class PrimaryAddress implements PrimaryAddress {
+  public constructor(init?: Partial<PrimaryAddress>) {
+    Object.assign(this, init);
+  }
+}

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Customer } from '../shared/models/customer';
 import { environment } from '../environments/environment';
 import { of, tap } from 'rxjs';
+import { PrimaryAddress } from '../shared/models/primaryAdress';
 
 
 @Injectable({
@@ -32,7 +33,9 @@ export class CustomerService {
   newCustomer(customerForm: any) {
     return this.http.post<any>(`${environment.apiUrl}customers.json?key=${environment.apiKey}`, customerForm).pipe(
       tap(result => {
-        //this.customers.push(customerForm);
+        let newCustomer = new Customer(customerForm);
+        newCustomer.primary_address = new PrimaryAddress(customerForm);
+        this.customers.unshift(newCustomer);
       })
     )
   }
