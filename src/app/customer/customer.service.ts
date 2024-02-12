@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer } from '../shared/models/customer';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { of, tap } from 'rxjs';
 import { PrimaryAddress } from '../shared/models/primaryAdress';
 
