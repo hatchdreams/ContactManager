@@ -27,7 +27,6 @@ export class NewCustomerComponent {
     ssn: ['', [Validators.pattern(this.socialSecurityValidator), Validators.required]],
     email: ['', [Validators.email, Validators.required], [this.validEmailNotTaken()]],
     mobile_phone_number: ['', [Validators.pattern(this.phoneValidator), Validators.required]],
-    //Address
     address_line_1: ['', Validators.required],
     city: ['', Validators.required],
     state: ['', Validators.required],

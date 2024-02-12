@@ -4,10 +4,10 @@
         <div class="list-group">
             <div class="d-flex my-2 mx-2">
               <input [(ngModel)]="search" type="text" placeholder="Search" class="form-control me-2">
-              <button class="btn btn-info mx-1">Add</button>
+              <button (click)="createNewCustomer=true" class="btn btn-info mx-1">Add</button>
             </div>
             <div *ngFor="let customer of customers" class="">
-                <a *ngIf="customer" routerLink="/customer/{{customer.customer_number}}" 
+                <a *ngIf="customer" (click)="selectedCustomer=customer"  routerLink="/customer/{{customer.customer_number}}"
                   class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
                     <img src="/assets/images/profile_image.jpg" alt="twbs" width="50" height="50" class="rounded-circle flex-shrink-0">
                     <div class="d-flex gap-2 w-100 justify-content-between">
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="col-8">
-      <!-- <app-customer-profile [selectedCustomer]="selectedCustomer"></app-customer-profile> -->
-      <app-new-customer></app-new-customer>
+      <app-customer-profile *ngIf="!createNewCustomer" [selectedCustomer]="selectedCustomer"></app-customer-profile>
+      <app-new-customer *ngIf="createNewCustomer"></app-new-customer>
     </div>
   </div>

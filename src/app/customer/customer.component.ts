@@ -10,10 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class CustomerComponent implements OnInit{
+  createNewCustomer: boolean = false;
   customers: Customer[] = [];
   selectedCustomer?: Customer;
   search: string = '';
-  
+
   constructor(private customerService: CustomerService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {

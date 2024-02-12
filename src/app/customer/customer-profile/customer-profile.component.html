@@ -1,13 +1,44 @@
 <main *ngIf="selectedCustomer">
     <div class="pt-5 pb-3 text-center">
       <img src="/assets/images/profile_image2.jpg" alt="twbs" width="100" height="100" class="rounded-circle flex-shrink-0">
-      <h2>{{selectedCustomer.first_name}} {{selectedCustomer.last_name}}</h2>
-      <p class="lead">Joined: {{selectedCustomer.join_date}}, C#: {{selectedCustomer.customer_number}}</p>
+      <h2>{{selectedCustomer.first_name}} {{selectedCustomer.last_name}} ({{selectedCustomer.customer_number}})</h2>
+      <p class="lead">Join Date: {{selectedCustomer.join_date}}</p>
     </div>
-     <div class="row mx-3">
+    <div class="row m-4">
+      <div class="col-6">
+        <i class="fa fa-envelop mx-2" style="font-size:30px"></i>
+        <span>{{selectedCustomer.email}}</span>
+      </div>
+      <div class="col-6">
+        <i class="fa fa-phone mx-2" style="font-size:30px"></i>
+        <span>{{selectedCustomer.mobile_phone_number}}</span>
+      </div>
+    </div>
+    <div class="row m-4">
+      <div class="col-6">
+        <i class="fa fa-present mx-2" style="font-size:30px"></i>
+        <span>{{selectedCustomer.date_birth}}</span>
+      </div>
+      <div class="col-6">
+        <i class="fa fa-key mx-2" style="font-size:30px"></i>
+        <span>{{selectedCustomer.ssn}}</span>
+      </div>
+    </div>
+    <div class="row m-4">
+      <div class="col-12">
+        <i class="fa fa-house mx-2" style="font-size:30px"></i>
+        <span>{{selectedCustomer.primary_address.address_line_1}}</span>
+        <span>, {{selectedCustomer.primary_address.city}}</span>
+        <span>, {{selectedCustomer.primary_address.state}}</span>
+        <span> {{selectedCustomer.primary_address.zip_code}}</span>
+      </div>
+    </div>
+
+
+
+     <!-- <div class="row mx-3">
       <div class="col">
         <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
-
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">First name</label>
@@ -101,6 +132,6 @@
           </ul>
           <button type="submit" [disabled]="customerForm.invalid" class="w-100 btn btn-primary btn-lg mt-3" >Save Customer</button>
           </form>
-      </div>
-    </div>
+      </div> 
+    </div>-->
   </main>
