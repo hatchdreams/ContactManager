@@ -1,10 +1,13 @@
 
-<div class="row align-items-start" *ngIf="customers.length > 0">
+<div class="row align-items-start" *ngIf="customers">
     <div class="col-4">
       <div class="list-group">
-        <div class="d-flex my-2 mx-2 list-group-item-sticky">
+        <div class="d-flex mt-2 mx-2">
           <input [(ngModel)]="search" (ngModelChange)="filterResults()" type="text" placeholder="Search" class="form-control me-2">
           <button (click)="createNewCustomer()" class="btn btn-info mx-1">New</button>
+        </div>
+        <div class=" mx-2 my-1 text-center">
+          <span class="text-center">1 to {{customers.length}} of {{customers.length}}</span>
         </div>
         <div *ngFor="let customer of customers" class="">
           <a *ngIf="customer" (click)="selectCustomerRow(customer)" [class.active]="selectedCustomer==customer" routerLink="/customer/{{customer.customer_number}}"

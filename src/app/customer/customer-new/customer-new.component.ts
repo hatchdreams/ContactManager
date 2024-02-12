@@ -4,6 +4,7 @@ import { Customer } from 'src/app/shared/models/customer';
 import { CustomerService } from '../customer.service';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime, finalize, map, switchMap, take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class NewCustomerComponent {
   socialSecurityValidator = "[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]"
   zipCodeValidator = "[0-9][0-9][0-9][0-9][0-9]";
 
-  constructor(private fb: FormBuilder, private customerService: CustomerService, private toastr: ToastrService) {}
+  constructor(private fb: FormBuilder, private customerService: CustomerService, 
+    private toastr: ToastrService, private router: Router) {}
 
   customerForm = this.fb.group({
     first_name: ['', Validators.required],
@@ -34,13 +36,14 @@ export class NewCustomerComponent {
     state: ['', Validators.required],
     zip_code: ['', [Validators.pattern(this.zipCodeValidator), Validators.required]],
   })
-
+  
   onSubmit() {
     if (this.customerForm.valid)
       this.customerService.newCustomer(this.customerForm.value).subscribe({
         next: () =>  {
           this.toastr.success('Customer Added')
           this.customerForm.reset();
+          this.router.navigateByUrl('/customer');
         },
         error: error => this.errors = error.errors
       })
@@ -64,4 +67,8 @@ export class NewCustomerComponent {
     }
   }
 
+  cancelNewCustomer() {
+    this.customerForm.reset();
+    this.router.navigateByUrl('/customer');
+  }
 }
