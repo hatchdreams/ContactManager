@@ -8,23 +8,25 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class CustomerService {
-  baseUrl = environment.apiUrl;
-  key = environment.apiKey; 
 
   constructor(private http: HttpClient) { }
 
   getCustomers() {
     let params = new HttpParams();
-    params = params.append('key', this.key);
+    params = params.append('key', environment.apiKey);
 
-    return this.http.get<Customer[]>(this.baseUrl + 'customers.json', {params})
+    return this.http.get<Customer[]>(`${environment.apiUrl}customers.json`, {params})
   }
 
   newCustomer(customerForm: any) {
-    let params = new HttpParams();
-    params = params.append('key', this.key);
-
-    return this.http.post<Customer>(this.baseUrl + 'customers.json' , {params})
+    //fake api - will always return 201
+    return this.http.post<any>(`${environment.apiUrl}customers.json?key=${environment.apiKey}`, customerForm)
   }
+
+  checkEmailExists(email: string) {
+    //fake api - will always return 201
+    return this.http.post<any>(`${environment.apiUrl}customers.json?key=${environment.apiKey}`, email)
+  }
+
 
 }

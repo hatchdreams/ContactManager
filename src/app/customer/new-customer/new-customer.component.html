@@ -1,8 +1,8 @@
 <form *ngIf="newCustomer" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
     <div class="pt-5 pb-3 text-center">
       <img src="/assets/images/profile_image2.jpg" alt="twbs" width="100" height="100" class="rounded-circle flex-shrink-0">
-      <h2>{{newCustomer.first_name}} {{newCustomer.last_name}}</h2>
-      <p class="lead">Joined: {{newCustomer.join_date}}, C#: {{newCustomer.customer_number}}</p>
+      <h2>New Customer ({{newCustomer.customer_number}})</h2>
+      <p class="lead">Join Date: {{newCustomer.join_date | date}}</p>
     </div>
     <div class="d-flex justify-content-center mt-2 mx-4">
       <div class="row">
@@ -14,13 +14,13 @@
           <app-text-input formControlName="last_name" [label]="'Last Name'"></app-text-input>
         </div>
         <div class="col-12">
-          <app-text-input formControlName="ssn" [label]="'Social Security Number'"></app-text-input>
+          <app-text-input formControlName="ssn" [label]="'Social Security Number (ex. 999-99-9999)'"></app-text-input>
         </div>
         <div class="col-12">
           <app-text-input formControlName="email" [label]="'Email Address'"></app-text-input>
         </div>
         <div class="col-6">
-          <app-text-input formControlName="mobile_phone_number" [label]="'Mobile Phone Number'"></app-text-input>
+          <app-text-input formControlName="mobile_phone_number" [label]="'Mobile Phone Number (ex. 000-000-0000)'"></app-text-input>
         </div>
         <div class="col-6">
           <app-text-input formControlName="date_birth" [label]="'Date of Birth'"></app-text-input>
