@@ -1,10 +1,12 @@
 
-.a-group {
+.list-group {
     height: 100vh; // Set the sidebar to full viewport height
     overflow-y: auto; // Make it scrollable
-    position: fixed
+    // position: fixed
 }
 
 // .list-group-item-sticky {
+//     position: -webkit-sticky; /* Safari */
 //     position: sticky;
+//     top: 0;
 // }

@@ -7,6 +7,13 @@
       <div class="row">
         <h4>Personal Information</h4>
         <div class="col-6">
+
+          <input type="text"
+           placeholder="Datepicker"
+           class="form-control"
+           bsDatepicker>
+
+           <!-- <bs-datepicker-inline [bsValue]="bsInlineValue"></bs-datepicker-inline> -->
           <app-text-input formControlName="first_name"  [label]="'First Name'"></app-text-input>
         </div>
         <div class="col-6">
@@ -33,7 +40,7 @@
           <app-text-input formControlName="city" [label]="'City'"></app-text-input>
         </div>
         <div class="col-3">
-          <app-select-dropdown formControlName="state" [label]="'State'"></app-select-dropdown>
+          <app-select-dropdown formControlName="state" [label]="'State'" [options]="stateOptions"></app-select-dropdown>
         </div>
         <div class="col-3">
           <app-text-input formControlName="zip_code" [label]="'Zip Code'"></app-text-input>

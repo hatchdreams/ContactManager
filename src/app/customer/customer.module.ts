@@ -20,7 +20,7 @@ import { NewCustomerComponent } from './customer-new/customer-new.component';
     CustomerRoutingModule,
     FormsModule,
     CoreModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class CustomerModule { }

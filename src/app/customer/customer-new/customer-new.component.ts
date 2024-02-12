@@ -1,10 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Customer } from 'src/app/shared/models/customer';
+import { Option } from 'src/app/shared/models/option';
 import { CustomerService } from '../customer.service';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime, finalize, map, switchMap, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { stateOptions } from 'src/app/shared/constants/states';
+import { regexPhone, regexSocialSecurity, regexZipCode } from 'src/app/shared/constants/regexes';
 
 
 @Component({
@@ -16,10 +19,7 @@ export class NewCustomerComponent {
   bsInlineValue = new Date();
   @Input() selectedCustomer?: Customer;
   errors: string[] | null = null;
-
-  phoneValidator ="[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]"
-  socialSecurityValidator = "[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]"
-  zipCodeValidator = "[0-9][0-9][0-9][0-9][0-9]";
+  stateOptions: Option[] = stateOptions;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, 
     private toastr: ToastrService, private router: Router) {}
@@ -28,13 +28,13 @@ export class NewCustomerComponent {
     first_name: ['', Validators.required],
     last_name: ['', Validators.required],
     date_birth: ['', Validators.required],
-    ssn: ['', [Validators.pattern(this.socialSecurityValidator), Validators.required]],
+    ssn: ['', [Validators.pattern(regexSocialSecurity), Validators.required]],
     email: ['', [Validators.email, Validators.required], [this.validEmailNotTaken()]],
-    mobile_phone_number: ['', [Validators.pattern(this.phoneValidator), Validators.required]],
+    mobile_phone_number: ['', [Validators.pattern(regexPhone), Validators.required]],
     address_line_1: ['', Validators.required],
     city: ['', Validators.required],
-    state: ['', Validators.required],
-    zip_code: ['', [Validators.pattern(this.zipCodeValidator), Validators.required]],
+    state: ['', [Validators.required], [this.noWhitespaceValidator()]],
+    zip_code: ['', [Validators.pattern(regexZipCode), Validators.required]],
   })
   
   onSubmit() {
@@ -64,6 +64,12 @@ export class NewCustomerComponent {
           )
         })
       )
+    }
+  }
+
+  noWhitespaceValidator() {
+    return (control: AbstractControl) => {
+      (control.value || '').trim().length? null : {'whitespace': true}
     }
   }
 

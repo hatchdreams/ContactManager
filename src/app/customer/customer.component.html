@@ -2,11 +2,11 @@
 <div class="row align-items-start" *ngIf="customers">
     <div class="col-4">
       <div class="list-group">
-        <div class="d-flex mt-2 mx-2">
+        <div class="d-flex mt-2 mx-2 list-group-item-sticky">
           <input [(ngModel)]="search" (ngModelChange)="filterResults()" type="text" placeholder="Search" class="form-control me-2">
           <button (click)="createNewCustomer()" class="btn btn-info mx-1">New</button>
         </div>
-        <div class=" mx-2 my-1 text-center">
+        <div class=" mx-2 my-1 text-center list-group-item-sticky">
           <span class="text-center">1 to {{customers.length}} of {{customers.length}}</span>
         </div>
         <div *ngFor="let customer of customers">

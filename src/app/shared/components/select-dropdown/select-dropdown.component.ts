@@ -1,5 +1,6 @@
 import { Component, Input, Self } from '@angular/core';
 import { FormControl, NgControl } from '@angular/forms';
+import { Option } from '../../models/option';
 
 @Component({
   selector: 'app-select-dropdown',
@@ -8,7 +9,8 @@ import { FormControl, NgControl } from '@angular/forms';
 })
 export class SelectDropdownComponent {
   @Input() label = '';
-
+  @Input() options: Option[] = [];
+  
   constructor(@Self() public controlDir: NgControl) { 
     this.controlDir.valueAccessor = this;
   }
