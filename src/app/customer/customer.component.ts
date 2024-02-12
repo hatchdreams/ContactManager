@@ -40,4 +40,9 @@ export class CustomerComponent implements OnInit{
       this.selectedCustomer = this.customers[0];
   }
 
+  //frontend filtering, limited api
+  filterResults() {
+ 
+  }
+
 }
