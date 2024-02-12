@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer } from '../shared/models/customer';
 import { environment } from '../environments/environment';
+import { of } from 'rxjs';
 
 
 @Injectable({
@@ -24,8 +25,8 @@ export class CustomerService {
   }
 
   checkEmailExists(email: string) {
-    //fake api - will always return 201
-    return this.http.post<any>(`${environment.apiUrl}customers.json?key=${environment.apiKey}`, email)
+    //replace with real api
+    return of(null);
   }
 
 

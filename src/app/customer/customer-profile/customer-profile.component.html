@@ -6,132 +6,42 @@
     </div>
     <div class="row m-4">
       <div class="col-6">
-        <i class="fa fa-envelop mx-2" style="font-size:30px"></i>
-        <span>{{selectedCustomer.email}}</span>
+        <i class="fa fa-regular fa-envelope mx-2"></i>
+        <a target="_blank" href="mailto:{{selectedCustomer.email}}">{{selectedCustomer.email || 'none'}}</a>
       </div>
       <div class="col-6">
-        <i class="fa fa-phone mx-2" style="font-size:30px"></i>
-        <span>{{selectedCustomer.mobile_phone_number}}</span>
+        <i class="fa fa-regular fa-regular fa-gift mx-2"></i>
+        <span>{{selectedCustomer.date_birth}} ({{selectedCustomer.date_birth | age}} years old)</span>
       </div>
     </div>
     <div class="row m-4">
       <div class="col-6">
-        <i class="fa fa-present mx-2" style="font-size:30px"></i>
-        <span>{{selectedCustomer.date_birth}}</span>
+        <i class="fa fa-regular fa-phone mx-2"></i>
+        <a href="tel:{{selectedCustomer.mobile_phone_number}}">{{selectedCustomer.mobile_phone_number || 'none'}}</a>
       </div>
       <div class="col-6">
-        <i class="fa fa-key mx-2" style="font-size:30px"></i>
-        <span>{{selectedCustomer.ssn}}</span>
+        <i class="fa fa-regular fa-key mx-2"></i>
+        <span>{{selectedCustomer.ssn || 'none'}}</span>
       </div>
     </div>
     <div class="row m-4">
-      <div class="col-12">
-        <i class="fa fa-house mx-2" style="font-size:30px"></i>
-        <span>{{selectedCustomer.primary_address.address_line_1}}</span>
-        <span>, {{selectedCustomer.primary_address.city}}</span>
-        <span>, {{selectedCustomer.primary_address.state}}</span>
-        <span> {{selectedCustomer.primary_address.zip_code}}</span>
+      <div class="col-6">
+        <i class="fa fa-regular fa-map mx-2"></i>
+        <a target="_blank" href="http://maps.google.com/?q={{selectedCustomer.primary_address.address_line_1}} {{selectedCustomer.primary_address.city}}, {{selectedCustomer.primary_address.state}} {{selectedCustomer.primary_address.zip_code}}">
+        {{selectedCustomer.primary_address.address_line_1}} {{selectedCustomer.primary_address.city}}, {{selectedCustomer.primary_address.state}} {{selectedCustomer.primary_address.zip_code}}
+        </a>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="col-6">
+        <i class="fa fa-flag-checkered fa-key mx-2"></i>
+        <span>{{selectedCustomer.join_date}} ({{selectedCustomer.join_date | dateAgo}})</span>
       </div>
     </div>
-
-
-
-     <!-- <div class="row mx-3">
-      <div class="col">
-        <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">First name</label>
-              <input type="text" [(ngModel)]="selectedCustomer.first_name" class="form-control" id="firstName" placeholder="" value="" required="">
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Last name</label>
-              <input type="text" [(ngModel)]="selectedCustomer.last_name" class="form-control" id="lastName" placeholder="" value="" required="">
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="ssn" class="form-label">Date of Birth </label>
-              <input  [(ngModel)]="selectedCustomer.date_birth" type="text" placeholder="01/01/1900" class="form-control" bsDatepicker>
-              <div class="invalid-feedback">
-                Valid date of birth is required.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
-              <input [(ngModel)]="selectedCustomer.email" type="email" class="form-control" id="email" placeholder="you@example.com">
-              <div class="invalid-feedback">
-                Please enter a valid email address.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="ssn" class="form-label">Mobile Phone Number <span class="text-body-secondary">(Optional)</span></label>
-              <input [(ngModel)]="selectedCustomer.mobile_phone_number" type="email" class="form-control" id="email" placeholder="407-456-7891">
-              <div class="invalid-feedback">
-                Please enter a valid phone number.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="ssn" class="form-label">SSN <span class="text-body-secondary">(Optional)</span></label>
-              <input [(ngModel)]="selectedCustomer.ssn" type="email" class="form-control" id="email" placeholder="123-45-6789">
-              <div class="invalid-feedback">
-                Please enter a valid social security number.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="address" class="form-label">Address</label>
-              <input [(ngModel)]="selectedCustomer.primary_address.address_line_1" type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
-              <div class="invalid-feedback">
-                Please enter your primary mailing address.
-              </div>
-            </div>
-            
-            <div class="col-md-5">
-              <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" required="">
-                <option value="">Choose...</option>
-                <option>United States</option>
-              </select>
-              <div class="invalid-feedback">
-                Please select a valid country.
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <label for="state" class="form-label">State</label>
-              <select class="form-select" id="state" required="">
-                <option value="">Choose...</option>
-                <option>California</option>
-              </select>
-              <div class="invalid-feedback">
-                Please provide a valid state.
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="zip" class="form-label">Zip</label>
-              <input [(ngModel)]="selectedCustomer.primary_address.zip_code" type="text" class="form-control" id="zip" placeholder="" required="">
-              <div class="invalid-feedback">
-                Zip code required.
-              </div>
-            </div>
-          </div>
-          <ul class="text-danger list-unstyled" *ngIf="errors">
-            <li *ngFor="let error of errors">
-              {{error}}
-            </li>
-          </ul>
-          <button type="submit" [disabled]="customerForm.invalid" class="w-100 btn btn-primary btn-lg mt-3" >Save Customer</button>
-          </form>
-      </div> 
-    </div>-->
+    <div class="row m-4">
+      <div class="col-6">
+        <i class="fa fa-regular fa-id-badge mx-2"></i>
+        <span>{{selectedCustomer.customer_number}}</span>
+      </div>
+    </div>
   </main>

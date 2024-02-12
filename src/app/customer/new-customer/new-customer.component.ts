@@ -51,7 +51,7 @@ export class NewCustomerComponent {
         take(1),
         switchMap(() => {
           return this.customerService.checkEmailExists(control.value).pipe(
-            map(result => result ?  null : {emailExists: true}),
+            map(result => result ?  {emailExists: true} : null),
             finalize(() => control.markAsTouched())
           )
         })
