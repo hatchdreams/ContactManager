@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './customer.service';
 import { Customer } from '../shared/models/customer';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -16,7 +16,8 @@ export class CustomerComponent implements OnInit{
   selectedCustomer?: Customer;
   search: string = '';
 
-  constructor(private customerService: CustomerService, private activatedRoute: ActivatedRoute) {}
+  constructor(private customerService: CustomerService, private activatedRoute: ActivatedRoute,
+      private router: Router) {}
 
   ngOnInit(): void {
     this.getCustomers();
@@ -39,6 +40,9 @@ export class CustomerComponent implements OnInit{
       this.selectedCustomer = this.customers.find(customer => customer.customer_number == selectedCustomerNumber);
     else
       this.selectedCustomer = this.customers[0];
+
+    if (!this.selectedCustomer)
+      this.router.navigateByUrl('/customer');
   }
   
   
