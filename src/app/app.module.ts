@@ -9,7 +9,6 @@ import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 @NgModule({
@@ -22,8 +21,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
-    HomeModule,
-    TooltipModule.forRoot()
+    HomeModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true},

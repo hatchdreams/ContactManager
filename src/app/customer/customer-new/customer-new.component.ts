@@ -67,9 +67,10 @@ export class NewCustomerComponent {
     }
   }
 
+  //not working
   noWhitespaceValidator() {
-    return (control: AbstractControl) => {
-      (control.value || '').trim().length? null : {'whitespace': true}
+    return (control: FormControl) => {
+      (control.value || '').trim().length ? {'whitespace': true} : null;
     }
   }
 

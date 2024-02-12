@@ -3,20 +3,13 @@
       <img src="/assets/images/profile_image2.jpg" alt="twbs" width="100" height="100" class="rounded-circle flex-shrink-0">
       <h2>New Customer (TBD)</h2>
     </div>
-    <div class="d-flex justify-content-center mt-2 mx-4">
+    <div class="d-flex justify-content-center mt-2 mx-1 mx-md-2 mx-lg-4">
       <div class="row">
         <h4>Personal Information</h4>
-        <div class="col-6">
-
-          <input type="text"
-           placeholder="Datepicker"
-           class="form-control"
-           bsDatepicker>
-
-           <!-- <bs-datepicker-inline [bsValue]="bsInlineValue"></bs-datepicker-inline> -->
+        <div class="col-12 col-md-6">
           <app-text-input formControlName="first_name"  [label]="'First Name'"></app-text-input>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <app-text-input formControlName="last_name" [label]="'Last Name'"></app-text-input>
         </div>
         <div class="col-12">
@@ -25,24 +18,24 @@
         <div class="col-12">
           <app-text-input formControlName="email" [label]="'Email Address'"></app-text-input>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <app-text-input formControlName="mobile_phone_number" [label]="'Mobile Phone Number (ex. 000-000-0000)'"></app-text-input>
         </div>
-        <div class="col-6">
-          <app-text-input formControlName="date_birth" [label]="'Date of Birth'"></app-text-input>
+        <div class="col-12 col-md-6">
+          <app-text-input formControlName="date_birth" [label]="'Date of Birth'" [isDatePicker]="true"></app-text-input>
         </div>
         <hr>
         <h4>Mailing Address</h4>
         <div class="col-12">
           <app-text-input formControlName="address_line_1" [label]="'Street'"></app-text-input>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <app-text-input formControlName="city" [label]="'City'"></app-text-input>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-md-3">
           <app-select-dropdown formControlName="state" [label]="'State'" [options]="stateOptions"></app-select-dropdown>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-md-3">
           <app-text-input formControlName="zip_code" [label]="'Zip Code'"></app-text-input>
         </div>
         <div class="col-12">
@@ -52,10 +45,10 @@
             </li>
           </ul>
         </div> 
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <button (click)="cancelNewCustomer()" class="w-100 btn btn-secondary btn-lg" >Cancel</button>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <button type="submit" class="w-100 btn btn-info btn-lg" >Create Customer</button>
         </div>
       </div>

@@ -4,28 +4,28 @@
       <h2>{{selectedCustomer.first_name}} {{selectedCustomer.last_name}} ({{selectedCustomer.customer_number}})</h2>
       <p class="lead">Join Date: {{selectedCustomer.join_date}}</p>
     </div>
-    <div class="row m-4">
-      <div class="col-6">
+    <div class="row mx-1 mx-md-2 mx-lg-4">
+      <div class="col-12 col-lg-6 my-2">
         <i class="fa fa-regular fa-envelope mx-2"></i>
         <a target="_blank" href="mailto:{{selectedCustomer.email}}">{{selectedCustomer.email || 'none'}}</a>
       </div>
-      <div class="col-6">
+      <div class="col-12 col-lg-6 my-2">
         <i class="fa fa-regular fa-regular fa-gift mx-2"></i>
         <span>{{selectedCustomer.date_birth}} ({{selectedCustomer.date_birth | age}} years old)</span>
       </div>
     </div>
-    <div class="row m-4">
-      <div class="col-6">
+    <div class="row mx-1 mx-md-2 mx-lg-4">
+      <div class="col-12 col-lg-6 my-2">
         <i class="fa fa-regular fa-phone mx-2"></i>
         <a href="tel:{{selectedCustomer.mobile_phone_number}}">{{selectedCustomer.mobile_phone_number || 'none'}}</a>
       </div>
-      <div class="col-6">
+      <div class="col-12 col-lg-6 my-2">
         <i class="fa fa-regular fa-key mx-2"></i>
         <span>{{selectedCustomer.ssn || 'none'}}</span>
       </div>
     </div>
-    <div class="row m-4">
-      <div class="col-6">
+    <div class="row mx-1 mx-md-2 mx-lg-4">
+      <div class="col-12 col-lg-6 my-2">
         <i class="fa fa-regular fa-map mx-2"></i>
         <a target="_blank" 
           href="http://maps.google.com/?q={{selectedCustomer.primary_address.address_line_1}} {{selectedCustomer.primary_address.city}}, {{selectedCustomer.primary_address.state}} {{selectedCustomer.primary_address.zip_code}}">{{selectedCustomer.primary_address.address_line_1}} {{selectedCustomer.primary_address.city}}, {{selectedCustomer.primary_address.state}} {{selectedCustomer.primary_address.zip_code}}
@@ -33,13 +33,13 @@
         <span></span>
         <span></span>
       </div>
-      <div class="col-6">
+      <div class="col-12 col-lg-6 my-2">
         <i class="fa fa-flag-checkered fa-key mx-2"></i>
         <span>{{selectedCustomer.join_date}} ({{selectedCustomer.join_date | dateAgo}})</span>
       </div>
     </div>
-    <div class="row m-4">
-      <div class="col-6">
+    <div class="row mx-1 mx-md-2 mx-lg-4">
+      <div class="col-12 col-lg-6 my-2">
         <i class="fa fa-regular fa-id-badge mx-2"></i>
         <span>{{selectedCustomer.customer_number}}</span>
       </div>

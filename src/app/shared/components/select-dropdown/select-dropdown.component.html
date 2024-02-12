@@ -1,12 +1,10 @@
 
   <div class="form-floating mb-3">
-
     <select class="form-select" id="state" required="">
       <option *ngFor="let option of options" 
-        [value]="option.value">
-        {{option.label}}
-    </option>
-        
+          [value]="option.value">
+          {{option.label}}
+      </option>
     </select>
     <label for="floatingSelect">{{label}}</label>
     <div *ngIf="control.errors?.['required']" class="invalid-feedback">Please select your {{label | lowercase}}</div>
