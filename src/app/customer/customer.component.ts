@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CustomerService } from './customer.service';
 import { Customer } from '../shared/models/customer';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class CustomerComponent implements OnInit{
-  createNew: boolean = false;
+  isMobileView: boolean = true;
   customers: Customer[] = [];
   customersCopy: Customer[] = [];
   selectedCustomer?: Customer;
@@ -19,8 +19,19 @@ export class CustomerComponent implements OnInit{
   constructor(private customerService: CustomerService, private activatedRoute: ActivatedRoute,
       private router: Router) {}
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.setMobileView();
+  }
+
   ngOnInit(): void {
     this.getCustomers();
+    this.setMobileView();
+    this.selectedCustomer = this.customers[0];
+  }
+
+  setMobileView() {
+    this.isMobileView = window.innerWidth <= 767;
   }
 
   getCustomers() {
@@ -28,33 +39,35 @@ export class CustomerComponent implements OnInit{
       next: response => {
         this.customers = response,
         this.customersCopy = response,
-        this.selectCustomerFromUrl();
-      },
-      error: error => console.log(error)
-    })
+        this.selectInitialCustomer();
+      }
+    });
   }
 
-  selectCustomerFromUrl() {
+  selectInitialCustomer() {
     const selectedCustomerNumber = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    if (selectedCustomerNumber)
+    if (selectedCustomerNumber) {
       this.selectedCustomer = this.customers.find(customer => customer.customer_number == selectedCustomerNumber);
-    else
-      this.selectedCustomer = this.customers[0];
 
-    if (!this.selectedCustomer)
+      if (!this.selectedCustomer)
       this.router.navigateByUrl('/customer');
+    }
+     
+    else if (!this.isMobileView)
+      this.selectedCustomer = this.customers[0];
   }
   
   
   selectCustomerRow(customer: Customer) {
     this.selectedCustomer = customer;
-    this.createNew = false;
   }
 
-  
+  deselectCustomer() {
+    delete this.selectedCustomer;
+  }
+
   createNewCustomer() {
-    this.createNew = true;
-    this.selectedCustomer = new Customer();
+    delete this.selectedCustomer;
     this.search = '';
     this.filterResults();
   }
@@ -63,5 +76,6 @@ export class CustomerComponent implements OnInit{
   filterResults() {
     this.customers = this.customersCopy.filter(customer => customer.first_name.includes(this.search) 
       || customer.last_name.includes(this.search))
+
   }
 }

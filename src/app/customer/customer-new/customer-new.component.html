@@ -1,5 +1,5 @@
-<form *ngIf="selectedCustomer" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
-    <div class="pt-5 pb-3 text-center">
+<form  [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <div class="pt-2 pt-lg-5 pb-3 text-center">
       <img src="/assets/images/profile_image2.jpg" alt="twbs" width="100" height="100" class="rounded-circle flex-shrink-0">
       <h2>New Customer (TBD)</h2>
     </div>
@@ -33,7 +33,8 @@
           <app-text-input formControlName="city" [label]="'City'"></app-text-input>
         </div>
         <div class="col-6 col-lg-3">
-          <app-select-dropdown formControlName="state" [label]="'State'" [options]="stateOptions"></app-select-dropdown>
+          <!-- <app-select-dropdown formControlName="state" [label]="'State'" [options]="stateOptions" value="value"></app-select-dropdown> -->
+          <app-text-input formControlName="state" [label]="'State'"></app-text-input>
         </div>
         <div class="col-6 col-lg-3">
           <app-text-input formControlName="zip_code" [label]="'Zip Code'"></app-text-input>
@@ -46,10 +47,10 @@
           </ul>
         </div> 
         <div class="col-12 col-md-6">
-          <button (click)="cancelNewCustomer()" class="w-100 btn btn-secondary btn-lg" >Cancel</button>
-        </div>
-        <div class="col-12 col-md-6">
           <button type="submit" class="w-100 btn btn-info btn-lg" >Create Customer</button>
+        </div>
+        <div class="col-12 col-md-6 mt-1">
+          <button (click)="cancelNewCustomer()" class="w-100 btn btn-secondary btn-lg" >Cancel</button>
         </div>
       </div>
     </div>

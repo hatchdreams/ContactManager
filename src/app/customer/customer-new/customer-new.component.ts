@@ -17,7 +17,6 @@ import { regexPhone, regexSocialSecurity, regexZipCode } from 'src/app/shared/co
 })
 export class NewCustomerComponent {
   bsInlineValue = new Date();
-  @Input() selectedCustomer?: Customer;
   errors: string[] | null = null;
   stateOptions: Option[] = stateOptions;
 
@@ -33,7 +32,7 @@ export class NewCustomerComponent {
     mobile_phone_number: ['', [Validators.pattern(regexPhone), Validators.required]],
     address_line_1: ['', Validators.required],
     city: ['', Validators.required],
-    state: ['', [Validators.required], [this.noWhitespaceValidator()]],
+    state: ['', [Validators.required]],
     zip_code: ['', [Validators.pattern(regexZipCode), Validators.required]],
   })
   
