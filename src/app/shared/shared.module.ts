@@ -5,11 +5,13 @@ import { TextInputComponent } from './components/text-input/text-input.component
 import { SelectDropdownComponent } from './components/select-dropdown/select-dropdown.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
     TextInputComponent,
-    SelectDropdownComponent
+    SelectDropdownComponent,
+    DatePickerComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ReactiveFormsModule,
     TextInputComponent,
     SelectDropdownComponent,
+    DatePickerComponent,
     TooltipModule,
     BsDatepickerModule,
   ]

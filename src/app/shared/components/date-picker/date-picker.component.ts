@@ -1,15 +1,15 @@
 import { Component, Input, Self } from '@angular/core';
-import { ControlValueAccessor, FormControl, NgControl, Validators } from '@angular/forms';
+import { FormControl, NgControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-text-input',
-  templateUrl: './text-input.component.html',
-  styleUrls: ['./text-input.component.scss']
+  selector: 'app-date-picker',
+  templateUrl: './date-picker.component.html',
+  styleUrls: ['./date-picker.component.scss']
 })
-export class TextInputComponent implements ControlValueAccessor {
-  @Input() type = 'text';
+
+export class DatePickerComponent {
+  @Input() type = 'date';
   @Input() label = '';
-  errorObject = '';
 
   constructor(@Self() public controlDir: NgControl) { 
     this.controlDir.valueAccessor = this;

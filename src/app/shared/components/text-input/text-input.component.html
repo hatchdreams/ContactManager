@@ -1,23 +1,15 @@
 
 <div class="form-floating mb-3">
-    <input *ngIf="!isDatePicker"
+    <input
         type={{type}}
         [formControl]="control"
         placeholder="{{label}}"
         class="form-control"
         [ngClass]="(control.touched) ? control.invalid ? 'is-invalid' : 'is-valid' : null"
     >
-    <input *ngIf="isDatePicker"
-        type={{type}}
-        [formControl]="control"
-        placeholder="{{label}}"
-        class="form-control"
-        [ngClass]="(control.touched) ? control.invalid ? 'is-invalid' : 'is-valid' : null"
-        bsDatepicker
-    >   
     <label for="floatingInput">{{label}}</label>
-    <div *ngIf="control.errors?.['required']" class="invalid-feedback">Please enter your {{label | lowercase}}</div>
-    <div *ngIf="control.errors?.['email']" class="invalid-feedback">Invalid email address</div>
-    <div *ngIf="control.errors?.['pattern']" class="invalid-feedback">Please enter a valid {{label | lowercase}}</div>
-    <div *ngIf="control.errors?.['emailExists']" class="invalid-feedback">Email address already in use</div>
+    <div *ngIf="control.errors?.['required']" class="invalid-feedback">{{label | lowercase}} is required</div>
+    <div *ngIf="control.errors?.['minLength']" class="invalid-feedback">{{label | lowercase}} is too shoot</div>
+    <div *ngIf="control.errors?.['pattern'] || control.errors?.['email']" class="invalid-feedback">Please enter a valid {{label | lowercase}}</div>
+    <div *ngIf="control.errors?.['emailExists'] || control.errors?.['ssnExists']" class="invalid-feedback">An existing account exists for this value</div>
 </div>

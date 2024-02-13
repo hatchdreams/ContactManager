@@ -16,26 +16,26 @@
           <app-text-input formControlName="ssn" [label]="'Social Security Number (ex. 999-99-9999)'"></app-text-input>
         </div>
         <div class="col-12">
-          <app-text-input formControlName="email" [label]="'Email Address'"></app-text-input>
+          <app-text-input formControlName="email" [label]="'Email Address'" type="email"></app-text-input>
         </div>
-        <div class="col-12 col-md-6">
-          <app-text-input formControlName="mobile_phone_number" [label]="'Mobile Phone Number (ex. 000-000-0000)'"></app-text-input>
+        <div class="col-12 col-lg-6">
+          <app-text-input formControlName="mobile_phone_number" [label]="'Mobile Phone (ex. 000-000-0000)'" type="tel"></app-text-input>
         </div>
-        <div class="col-12 col-md-6">
-          <app-text-input formControlName="date_birth" [label]="'Date of Birth'" [isDatePicker]="true"></app-text-input>
+        <div class="col-12 col-lg-6">
+          <app-text-input formControlName="date_birth" [label]="'Date of Birth'" type="date"></app-text-input>
         </div>
         <hr>
         <h4>Mailing Address</h4>
         <div class="col-12">
           <app-text-input formControlName="address_line_1" [label]="'Street'"></app-text-input>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-lg-6">
           <app-text-input formControlName="city" [label]="'City'"></app-text-input>
         </div>
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-lg-3">
           <app-select-dropdown formControlName="state" [label]="'State'" [options]="stateOptions"></app-select-dropdown>
         </div>
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-lg-3">
           <app-text-input formControlName="zip_code" [label]="'Zip Code'"></app-text-input>
         </div>
         <div class="col-12">

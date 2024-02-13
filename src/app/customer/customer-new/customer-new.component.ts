@@ -25,10 +25,10 @@ export class NewCustomerComponent {
     private toastr: ToastrService, private router: Router) {}
 
   customerForm = this.fb.group({
-    first_name: ['', Validators.required],
-    last_name: ['', Validators.required],
+    first_name: ['', [Validators.required, Validators.minLength(2)]],
+    last_name: ['', [Validators.required, Validators.minLength(2)]],
     date_birth: ['', Validators.required],
-    ssn: ['', [Validators.pattern(regexSocialSecurity), Validators.required]],
+    ssn: ['', [Validators.pattern(regexSocialSecurity), Validators.required], [this.validSSNNotTaken()]],
     email: ['', [Validators.email, Validators.required], [this.validEmailNotTaken()]],
     mobile_phone_number: ['', [Validators.pattern(regexPhone), Validators.required]],
     address_line_1: ['', Validators.required],
@@ -58,6 +58,21 @@ export class NewCustomerComponent {
         debounceTime(1000),
         take(1),
         switchMap(() => {
+          return this.customerService.checkSSNExists(control.value).pipe(
+            map(result => result ?  {ssnExists: true} : null),
+            finalize(() => control.markAsTouched())
+          )
+        })
+      )
+    }
+  }
+
+  validSSNNotTaken(): AsyncValidatorFn {
+    return (control: AbstractControl) => {
+      return control.valueChanges.pipe(
+        debounceTime(1000),
+        take(1),
+        switchMap(() => {
           return this.customerService.checkEmailExists(control.value).pipe(
             map(result => result ?  {emailExists: true} : null),
             finalize(() => control.markAsTouched())
@@ -70,7 +85,7 @@ export class NewCustomerComponent {
   //not working
   noWhitespaceValidator() {
     return (control: FormControl) => {
-      (control.value || '').trim().length ? {'whitespace': true} : null;
+      (control.value || '').trim().length ? {whitespace: true} : null;
     }
   }
 
