@@ -1,6 +1,9 @@
 
   <div class="form-floating mb-3">
-    <select class="form-select" id="state" required="">
+    <select class="form-select"
+      [formControl]="control"  
+      [ngClass]="(control.touched) ? control.invalid ? 'is-invalid' : 'is-valid' : null"
+    >
       <option *ngFor="let option of options" 
           [value]="option.value">
           {{option.label}}

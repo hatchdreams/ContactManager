@@ -23,8 +23,6 @@ export class DatePickerComponent {
   writeValue(obj: any): void {
     this.minDate.setFullYear( this.minDate.getFullYear() - this.minYearsInPast );
     this.maxDate.setFullYear( this.maxDate.getFullYear() + this.maxYearsInFuture );
-    console.log(this.minDate)
-    console.log(this.maxDate)
   }
   
   registerOnChange(fn: any): void {

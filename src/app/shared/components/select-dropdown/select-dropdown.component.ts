@@ -18,6 +18,7 @@ export class SelectDropdownComponent {
   writeValue(obj: any): void {
   }
   registerOnChange(fn: any): void {
+    console.log(this.control)
   }
   registerOnTouched(fn: any): void {
   }

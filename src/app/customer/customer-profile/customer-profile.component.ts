@@ -8,8 +8,10 @@ import { CustomerService } from '../customer.service';
   templateUrl: './customer-profile.component.html',
   styleUrls: ['./customer-profile.component.scss']
 })
+
 export class CustomerProfileComponent {
   @Input() selectedCustomer?: Customer;
 
-  constructor(private fb: FormBuilder, private customerService: CustomerService) {}
+  constructor(private fb: FormBuilder, private customerService: CustomerService) {
+  }
 }
