@@ -13,7 +13,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 
 export class CustomerComponent implements OnInit{
-  isNewCustomerView: boolean = false;
   isMobileView: boolean = true;
   customers: Customer[] = [];
   customersCopy: Customer[] = [];
@@ -63,17 +62,14 @@ export class CustomerComponent implements OnInit{
   
   selectCustomerRow(customer: Customer) {
     this.selectedCustomer = customer;
-    this.isNewCustomerView = false;
   }
 
   backToList() {
     delete this.selectedCustomer;
-    this.isNewCustomerView = false;
   }
 
   createNewCustomer() {
-    delete this.selectedCustomer;
-    this.isNewCustomerView = true;
+    this.selectedCustomer = new Customer;
     this.clearSearch();
   }
 

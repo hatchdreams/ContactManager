@@ -34,7 +34,6 @@
         </div>
         <div class="col-6 col-lg-3">
           <app-select-dropdown formControlName="state" [label]="'State'" [options]="stateOptions"></app-select-dropdown>
-          <!-- <app-text-input formControlName="state" [label]="'State'" examplePattern="NY"></app-text-input> -->
         </div>
         <div class="col-6 col-lg-3">
           <app-text-input formControlName="zip_code" [label]="'Zip Code'" examplePattern="90210"></app-text-input>
@@ -47,7 +46,7 @@
           </ul>
         </div> 
         <div class="col-12 my-2">
-          <button (click)="onSubmit()" class="w-100 btn btn-info btn-lg" >Create Customer</button>
+          <button (click)="submitNewCustomer()" class="w-100 btn btn-info btn-lg" >Create Customer</button>
         </div>
       </div>
     </div>

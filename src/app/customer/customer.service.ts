@@ -35,7 +35,10 @@ export class CustomerService {
       tap(result => {
         let newCustomer = new Customer(customerForm);
         newCustomer.primary_address = new PrimaryAddress(customerForm);
+        newCustomer.customer_number = Math.floor(Math.random()*90000) + 10000;
+        newCustomer.join_date = new Date().toDateString();
         this.customers.unshift(newCustomer);
+        return of(newCustomer);
       })
     )
   }

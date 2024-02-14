@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { debounceTime, finalize, map, switchMap, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { stateOptions } from 'src/app/shared/constants/states';
+import { Customer } from 'src/app/shared/models/customer';
 
 
 @Component({
@@ -14,6 +15,9 @@ import { stateOptions } from 'src/app/shared/constants/states';
   styleUrls: ['./customer-new.component.scss']
 })
 export class NewCustomerComponent {
+
+  @Input() selectedCustomer?: Customer;
+
   bsInlineValue = new Date();
   errors: string[] | null = null;
   stateOptions: Option[] = stateOptions;
@@ -35,11 +39,12 @@ export class NewCustomerComponent {
     zip_code: ['', [Validators.pattern(/^[0-9]{5}([- /]?[0-9]{4})?$/), Validators.required]],
   })
   
-  onSubmit() {
+  submitNewCustomer() {
     if (this.customerForm.valid)
       this.customerService.newCustomer(this.customerForm.value).subscribe({
-        next: () =>  {
+        next: (result) =>  {
           this.toastr.success('Customer Added')
+          this.selectedCustomer = result;
           this.customerForm.reset();
           this.router.navigateByUrl('/customer');
         },
