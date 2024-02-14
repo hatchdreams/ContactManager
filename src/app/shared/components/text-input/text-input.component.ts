@@ -9,7 +9,8 @@ import { ControlValueAccessor, FormControl, NgControl, Validators } from '@angul
 export class TextInputComponent implements ControlValueAccessor {
   @Input() type = 'text';
   @Input() label = '';
-  errorObject = '';
+  @Input() examplePattern = '';
+
 
   constructor(@Self() public controlDir: NgControl) { 
     this.controlDir.valueAccessor = this;

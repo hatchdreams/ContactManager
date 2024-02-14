@@ -7,6 +7,8 @@
         class="form-control"
         [ngClass]="(control.touched) ? control.invalid ? 'is-invalid' : 'is-valid' : null"
         bsDatepicker
+        [minDate]="minDate"
+        [maxDate]="maxDate"
     >   
     <label for="floatingInput">{{label}}</label>
     <div *ngIf="control.errors?.['required']" class="invalid-feedback">{{label | lowercase}} is required</div>

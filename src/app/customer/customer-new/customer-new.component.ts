@@ -19,7 +19,8 @@ export class NewCustomerComponent {
   stateOptions: Option[] = stateOptions;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, 
-    private toastr: ToastrService, private router: Router) {}
+    private toastr: ToastrService, private router: Router) {
+    }
 
   customerForm = this.fb.group({
     first_name: ['', [Validators.required, Validators.minLength(2)]],
@@ -30,7 +31,7 @@ export class NewCustomerComponent {
     mobile_phone_number: ['', [Validators.pattern(/^(?:\([2-9]\d{2}\)\ ?|[2-9]\d{2}(?:\-?|\ ?))[2-9]\d{2}[- ]?\d{4}$/), Validators.required]],
     address_line_1: ['', Validators.required],
     city: ['', Validators.required],
-    state: ['', [Validators.required]],
+    state: ['', [Validators.required, Validators.pattern(/^((AL)|(AK)|(AS)|(AZ)|(AR)|(CA)|(CO)|(CT)|(DE)|(DC)|(FM)|(FL)|(GA)|(GU)|(HI)|(ID)|(IL)|(IN)|(IA)|(KS)|(KY)|(LA)|(ME)|(MH)|(MD)|(MA)|(MI)|(MN)|(MS)|(MO)|(MT)|(NE)|(NV)|(NH)|(NJ)|(NM)|(NY)|(NC)|(ND)|(MP)|(OH)|(OK)|(OR)|(PW)|(PA)|(PR)|(RI)|(SC)|(SD)|(TN)|(TX)|(UT)|(VT)|(VI)|(VA)|(WA)|(WV)|(WI)|(WY))$/)]],
     zip_code: ['', [Validators.pattern(/^[0-9]{5}([- /]?[0-9]{4})?$/), Validators.required]],
   })
   
@@ -50,7 +51,7 @@ export class NewCustomerComponent {
   }
 
   removeNonDigits(event: any) {
-   // event.target.value = event.target.value.replace(/\D/g,'');
+   event.target.value = event.target.value.replace(/\D/g,'');
   }
 
   validEmailNotTaken(): AsyncValidatorFn {

@@ -8,15 +8,25 @@ import { FormControl, NgControl } from '@angular/forms';
 })
 
 export class DatePickerComponent {
-  @Input() type = 'date';
+  @Input() type = 'text';
   @Input() label = '';
-
+  @Input() minYearsInPast: number=120;
+  @Input() maxYearsInFuture: number=0;
+  minDate: Date = new Date();
+  maxDate: Date = new Date();;
+  
   constructor(@Self() public controlDir: NgControl) { 
     this.controlDir.valueAccessor = this;
   }
 
+
   writeValue(obj: any): void {
+    this.minDate.setFullYear( this.minDate.getFullYear() - this.minYearsInPast );
+    this.maxDate.setFullYear( this.maxDate.getFullYear() + this.maxYearsInFuture );
+    console.log(this.minDate)
+    console.log(this.maxDate)
   }
+  
   registerOnChange(fn: any): void {
   }
   registerOnTouched(fn: any): void {
