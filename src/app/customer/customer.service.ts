@@ -35,8 +35,14 @@ export class CustomerService {
       tap(result => {
         let newCustomer = new Customer(customerForm);
         newCustomer.primary_address = new PrimaryAddress(customerForm);
+        
+        //api whould handle data manipulation
         newCustomer.customer_number = Math.floor(Math.random()*90000) + 10000;
-        newCustomer.join_date = new Date().toDateString();
+        newCustomer.join_date = new Date().toLocaleDateString("en-US");
+        newCustomer.date_birth = new Date(newCustomer.date_birth).toLocaleDateString("en-US");
+        newCustomer.mobile_phone_number = newCustomer.mobile_phone_number?.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+        newCustomer.ssn = newCustomer.ssn?.replace(/(\d{3})(\d{2})(\d{4})/, '$1-$2-$3');
+
         this.customers.unshift(newCustomer);
         return of(newCustomer);
       })

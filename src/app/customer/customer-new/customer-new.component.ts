@@ -46,7 +46,7 @@ export class NewCustomerComponent {
           this.toastr.success('Customer Added')
           this.selectedCustomer = result;
           this.customerForm.reset();
-          this.router.navigateByUrl('/customer');
+          this.router.navigateByUrl('/customer/'+ this.selectedCustomer?.customer_number);
         },
         error: error => this.errors = error.errors
       })
