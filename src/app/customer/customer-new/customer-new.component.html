@@ -1,4 +1,4 @@
-<form  [formGroup]="customerForm" autocomplete="false">
+<form  [formGroup]="customerForm"  autocomplete="off">
     <div class="pt-2 pt-lg-5 pb-3 text-center">
       <img src="/assets/images/profile_image2.jpg" alt="twbs" width="100" height="100" class="rounded-circle flex-shrink-0">
       <h2>New Customer (TBD)</h2>
@@ -7,37 +7,37 @@
       <div class="row">
         <h4>Personal Information</h4>
         <div class="col-12 col-md-6">
-          <app-text-input formControlName="first_name"  [label]="'First Name'"></app-text-input>
+          <app-text-input formControlName="first_name"  [label]="'First Name'" autocomplete="off"></app-text-input>
         </div>
         <div class="col-12 col-md-6">
-          <app-text-input formControlName="last_name" [label]="'Last Name'"></app-text-input>
+          <app-text-input formControlName="last_name" [label]="'Last Name'" autocomplete="off"></app-text-input>
         </div>
         <div class="col-12">
-          <app-text-input formControlName="ssn" [label]="'Social Security Number (ex. 999-99-9999)'"></app-text-input>
+          <app-text-input formControlName="ssn" [label]="'Social Security Number (ex. 999-99-9999)'" autocomplete="off"></app-text-input>
         </div>
         <div class="col-12">
-          <app-text-input formControlName="email" [label]="'Email Address'" type="email"></app-text-input>
+          <app-text-input formControlName="email" [label]="'Email Address'" type="email" autocomplete="off"></app-text-input>
         </div>
         <div class="col-12 col-lg-6">
-          <app-text-input formControlName="mobile_phone_number" [label]="'Mobile Phone (ex. 000-000-0000)'" type="tel"></app-text-input>
+          <app-text-input formControlName="mobile_phone_number" [label]="'Mobile Phone (ex. 000-000-0000)'" type="tel" autocomplete="off"></app-text-input>
         </div>
         <div class="col-12 col-lg-6">
-          <app-text-input formControlName="date_birth" [label]="'Date of Birth'" type="date"></app-text-input>
+          <app-text-input formControlName="date_birth" [label]="'Date of Birth'" type="date" autocomplete="off"></app-text-input>
         </div>
         <hr>
         <h4>Primary Address</h4>
         <div class="col-12">
-          <app-text-input formControlName="address_line_1" [label]="'Street'"></app-text-input>
+          <app-text-input formControlName="address_line_1" [label]="'Street'" autocomplete="off"></app-text-input>
         </div>
         <div class="col-12 col-lg-6">
-          <app-text-input formControlName="city" [label]="'City'"></app-text-input>
+          <app-text-input formControlName="city" [label]="'City'" autocomplete="off"></app-text-input>
         </div>
         <div class="col-6 col-lg-3">
           <!-- <app-select-dropdown formControlName="state" [label]="'State'" [options]="stateOptions" value="value"></app-select-dropdown> -->
-          <app-text-input formControlName="state" [label]="'State'"></app-text-input>
+          <app-text-input formControlName="state" [label]="'State'" autocomplete="off"></app-text-input>
         </div>
         <div class="col-6 col-lg-3">
-          <app-text-input formControlName="zip_code" [label]="'Zip Code'"></app-text-input>
+          <app-text-input formControlName="zip_code" [label]="'Zip Code'" autocomplete="off"></app-text-input>
         </div>
         <div class="col-12">
           <ul class="text-danger list-unstyled mt-3" *ngIf="errors && customerForm.invalid">
