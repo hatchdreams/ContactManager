@@ -9,7 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./customer.component.scss']
 })
 
+@HostListener('window:resize', ['$event'])
+
+
 export class CustomerComponent implements OnInit{
+  isNewCustomerView: boolean = false;
   isMobileView: boolean = true;
   customers: Customer[] = [];
   customersCopy: Customer[] = [];
@@ -19,17 +23,17 @@ export class CustomerComponent implements OnInit{
   constructor(private customerService: CustomerService, private activatedRoute: ActivatedRoute,
       private router: Router) {}
 
-  @HostListener('window:resize', ['$event'])
+  ngOnInit(): void {
+    this.getCustomers();
+    this.setMobileView();
+    this.selectInitialCustomer();
+  }
+
   onResize() {
     this.setMobileView();
   }
 
-  ngOnInit(): void {
-    this.getCustomers();
-    this.setMobileView();
-    this.selectedCustomer = this.customers[0];
-  }
-
+  //move to global
   setMobileView() {
     this.isMobileView = window.innerWidth <= 767;
   }
@@ -50,32 +54,37 @@ export class CustomerComponent implements OnInit{
       this.selectedCustomer = this.customers.find(customer => customer.customer_number == selectedCustomerNumber);
 
       if (!this.selectedCustomer)
-      this.router.navigateByUrl('/customer');
+        this.router.navigateByUrl('/customer');
     }
      
     else if (!this.isMobileView)
       this.selectedCustomer = this.customers[0];
   }
   
-  
   selectCustomerRow(customer: Customer) {
     this.selectedCustomer = customer;
+    this.isNewCustomerView = false;
   }
 
-  deselectCustomer() {
+  backToList() {
     delete this.selectedCustomer;
+    this.isNewCustomerView = false;
   }
 
   createNewCustomer() {
     delete this.selectedCustomer;
-    this.search = '';
-    this.filterResults();
+    this.isNewCustomerView = true;
+    this.clearSearch();
   }
 
-  //frontend filtering, limited api
   filterResults() {
-    this.customers = this.customersCopy.filter(customer => customer.first_name.includes(this.search) 
-      || customer.last_name.includes(this.search))
+    this.customers = this.customersCopy.filter(customer => 
+      (customer.first_name + ' ' + customer.last_name).toLowerCase().includes(this.search.toLowerCase())
+    );
+  }
 
+  clearSearch() {
+    this.search = '';
+    this.filterResults();
   }
 }

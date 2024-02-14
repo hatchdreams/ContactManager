@@ -1,13 +1,15 @@
 
 <div class="row align-items-start" *ngIf="customers">
-    <div class="col-12 col-md-5 col-lg-5 col-xl-4" *ngIf="!isMobileView || (!selectedCustomer && isMobileView)">
+    <div class="col-12 col-md-5 col-lg-5 col-xl-4" *ngIf="!isMobileView || (isMobileView && (!selectedCustomer && !isNewCustomerView))">
       <div class="list-group">
-        <div class="d-flex mt-2 mx-2">
-          <input [(ngModel)]="search" (ngModelChange)="filterResults()" type="text" placeholder="Search" class="form-control me-2">
-          <button (click)="createNewCustomer()" class="btn btn-info mx-1">New</button>
-        </div>
-        <div class=" mx-2 my-1 text-center">
-          <span class="text-center">1 to {{customers.length}} of {{customers.length}}</span>
+        <div class="item-sticky">
+          <div class="d-flex mt-2 mx-2">
+            <input [(ngModel)]="search" (ngModelChange)="filterResults()" type="text" placeholder="Search" class="form-control me-2">
+            <button (click)="createNewCustomer()" class="btn btn-info mx-1">New</button>
+          </div>
+          <div class=" mx-2 my-1 text-center">
+            <span class="text-center">1 to {{customers.length}} of {{customers.length}}</span>
+          </div>
         </div>
         <div *ngFor="let customer of customers">
           <a *ngIf="customer" (click)="selectCustomerRow(customer)" [class.active]="selectedCustomer==customer" routerLink="/customer/{{customer.customer_number}}"
@@ -26,9 +28,9 @@
       </div>
     </div>
     <div class="col-12 col-sm-6 col-md-7 col-lg-7 col-xl-8">
-      <button *ngIf="isMobileView" (click)="deselectCustomer()" class="btn btn-secondary btn-sm m-2" >back</button>
-      <app-customer-profile *ngIf="selectedCustomer" [selectedCustomer]="selectedCustomer"></app-customer-profile>
-      <app-customer-new *ngIf="!selectedCustomer"></app-customer-new>
+      <button *ngIf="isMobileView" (click)="backToList()" class="btn btn-secondary btn-sm m-2" >back</button>
+      <app-customer-profile *ngIf="!isNewCustomerView" [selectedCustomer]="selectedCustomer"></app-customer-profile>
+      <app-customer-new *ngIf="isNewCustomerView"></app-customer-new>
     </div>
   </div>
 

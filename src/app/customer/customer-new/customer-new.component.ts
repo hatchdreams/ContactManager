@@ -37,6 +37,7 @@ export class NewCustomerComponent {
   })
   
   onSubmit() {
+    debugger;
     if (this.customerForm.valid)
       this.customerService.newCustomer(this.customerForm.value).subscribe({
         next: () =>  {
@@ -90,6 +91,6 @@ export class NewCustomerComponent {
 
   cancelNewCustomer() {
     this.customerForm.reset();
-    this.router.navigateByUrl('/customer');
+    this.router.navigateByUrl('/customer/0');
   }
 }

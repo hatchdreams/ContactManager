@@ -41,12 +41,13 @@ export class CustomerService {
   }
 
   checkEmailExists(email: string) {
-     //replace with api
+    //replace with api
     return of(null);
   }
 
   checkSSNExists(ssn: string) {
-    return of(null); //replace with api
+    //replace with api
+    return of(null); 
   }
 
 

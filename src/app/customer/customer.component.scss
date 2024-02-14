@@ -4,3 +4,11 @@
     overflow-y: auto; // Make it scrollable
     // position: fixed
 }
+
+.item-sticky {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(190, 190, 190, 0.9);
+}
